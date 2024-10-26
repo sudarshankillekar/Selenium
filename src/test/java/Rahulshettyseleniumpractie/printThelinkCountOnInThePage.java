@@ -27,7 +27,7 @@ public class printThelinkCountOnInThePage {
         	  String clickOnLinkTab =  Keys.chord(Keys.CONTROL,Keys.ENTER);
         	  
         	  column.findElements(By.tagName("a")).get(i).sendKeys(clickOnLinkTab);
-//        	  Thread.sleep(5000L);
+
         	  
         	  
          }
