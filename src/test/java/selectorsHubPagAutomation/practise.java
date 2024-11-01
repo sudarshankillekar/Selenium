@@ -13,21 +13,16 @@ public class practise {
 		
 		
 		WebDriver driver = new ChromeDriver();
-		
 		driver.manage().window().maximize();
 		
 		driver.get("https://www.w3schools.com/html/html_tables.asp");
-		WebElement tablelemenet =    driver.findElement(By.xpath("//table"));
-		
-		 //row
-		 List<WebElement> row =  tablelemenet.findElements(By.tagName("tr"));
-		 WebElement    thirdrow = row.get(2);
-	     //	column
-		 List<WebElement> column = thirdrow.findElements(By.tagName("td"));
-		 WebElement thirdcolumn = column.get(0);
-		
-		System.out.println(thirdcolumn.getText());
-	
+        WebElement element = driver.findElement(By.xpath("//table"));
+	    List<WebElement>  row =  element.findElements(By.tagName("tr"));
+	    WebElement rowdata = row.get(2);
+	    List<WebElement>  coldata =  rowdata.findElements(By.tagName("td"));
+	    WebElement webColdata = coldata.get(1);
+	    System.out.println(webColdata.getText());
 	}
 
+	
 }

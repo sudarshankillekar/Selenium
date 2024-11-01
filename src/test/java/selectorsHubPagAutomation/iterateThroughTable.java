@@ -14,7 +14,7 @@ public class iterateThroughTable {
 		    WebDriver driver = new ChromeDriver();
 	        // Navigate to the webpage containing the table
 		    driver.manage().window().maximize();
-	        driver.get("https://www.w3schools.com/html/html_tables.asp");
+	        driver.get("https://www.javatpoint.com/html-table");
 
 	        // Locate the table by its XPath, id, or CSS selector (modify the locator accordingly)
 	        WebElement table = driver.findElement(By.xpath("//table"));
