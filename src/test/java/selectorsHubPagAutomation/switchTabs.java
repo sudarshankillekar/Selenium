@@ -1,9 +1,10 @@
 package selectorsHubPagAutomation;
 
+import java.util.Iterator;
+import java.util.Set;
+
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class switchTabs {
@@ -13,15 +14,23 @@ public class switchTabs {
 		WebDriver driver;
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.get("https://www.makemytrip.com/flights/");
-//		JavascriptExecutor jse      =         (JavascriptExecutor)driver;
-//		jse.executeScript("window.scrollBy(0,2500)");
-//		WebElement frameElement = driver.findElement(By.xpath("//iframe[@id='coming google']"));
-//		driver.switchTo().frame(frameElement);
-		driver.findElement(By.xpath("(//span[@class = \"commonModal__close\"]")).click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//a[contains(text(),\"Book Now\")])[1]")).click();
-		
+		driver.get("https://selectorshub.com/xpath-practice-page/");
+		driver.findElement(By.xpath("//a[contains(text(),\" SelectorsHub Youtube Channel  \")]")).click();
+             Set<String>  tabs  =        driver.getWindowHandles();
+             Iterator<String> iterator  = tabs.iterator();
+	         String Parent  = iterator.next();  
+	         Thread.sleep(2000);
+             String child  =  iterator.next();
+   
+	          driver.switchTo().window(child);
+	         
+	          Thread.sleep(2000);
+	          
+	          driver.switchTo().window(child).close();
+	          Thread.sleep(2000);
+	          
+	          driver.switchTo().window(Parent);
+             
 	}
 
 }
