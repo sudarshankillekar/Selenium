@@ -1,5 +1,8 @@
 package Rahulshettyseleniumpractie;
 
+import java.util.Iterator;
+import java.util.Set;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -27,11 +30,18 @@ public class printThelinkCountOnInThePage {
         	  String clickOnLinkTab =  Keys.chord(Keys.CONTROL,Keys.ENTER);
         	  
         	  column.findElements(By.tagName("a")).get(i).sendKeys(clickOnLinkTab);
-
-        	  
-        	  
+  
          }
-    
+         
+         Set<String> windowhandle =  driver.getWindowHandles();
+         Iterator<String>  iterator =    windowhandle.iterator();
+         
+         
+         
+         while(iterator.hasNext()) {
+        	 
+         }
+         
 	}
 
 }
