@@ -33,7 +33,6 @@ public class findBrokenLinks {
 		connection.connect();
 		int resPonsecode =  connection.getResponseCode();
 		System.out.println(resPonsecode);
-	//	assertTrue(resPonsecode<400, "The Link with Text "+link.getText()+" ");
 	    ass.assertTrue(resPonsecode<400, "The Link with Text "+link.getText()+" ");
    	    }	
    	    
