@@ -14,24 +14,28 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class practice {
-
-	public static void main(String[] args) throws MalformedURLException, IOException {
+	
+	public static void main(String[] args) throws MalformedURLException, IOException, InterruptedException {
 	
 		WebDriver driver = new ChromeDriver();
-		driver.get("https://www.easemytrip.com/");
-	    List<WebElement> links  = driver.findElements(By.xpath("//div[@class=\"rightfotmenu\"]/div[@class=\"menuft1 ftnew flxwrp\"]/div[@class=\"menulinkx\"]/ul/li/a[@href]"));
+	 
+		driver.manage().window().maximize();
 	
-	    for(WebElement link : links) {
-	    	
-	     String Url = link.getAttribute("href");
-	     HttpURLConnection connection     = (HttpURLConnection)new URL(Url).openConnection();
-	     connection.setRequestMethod("HEAD");	                     
-	     connection.connect();
-	     int resPonseCode = connection.getResponseCode();
-	     System.out.println(resPonseCode+" "+link.getText());	
+	    driver.get("https://www.goibibo.com/flights/");
+	    
+	    Thread.sleep(1000);
+	    
+	    driver.findElement(By.xpath("//span[@class=\"sc-jlZhew inxprl\"]")).click();
+	    
+	    Thread.sleep(1000);
+	    
+	    System.out.println(driver.findElements(By.tagName("a")).size()); 
+	    
+	    
+	    
 	    }
 	    
 	    
 	}
 
-}
+

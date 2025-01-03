@@ -1,12 +1,15 @@
 package Rahulshettyseleniumpractie;
 
 import java.sql.Driver;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 
 public class test {
 
@@ -19,24 +22,21 @@ public class test {
 	driver.manage().window().maximize();
 	
 	driver.get("https://www.redbus.in/");
-		
-	driver.findElement(By.id("src")).sendKeys("beng");
 	
-	Thread.sleep(2000);
+	driver.findElement(By.xpath("(//div[@class=\"rb_main_secondary_item  link\"])[1]")).click();
 	
-	 List<WebElement> DDvalues =  driver.findElements(By.xpath("//ul[@class =\"sc-dnqmqq dZhbJF\"]//li//div//text"));
-	
-	 String toSelectValue = "Bengali Square";
-	 
-	 for (WebElement webElement : DDvalues) {
-	 
-		 String value = webElement.getText();
-		 System.out.println(value);
-		if(value.contains(toSelectValue)) {
-			     webElement.click();
-			     break;
-		}
-		 
+	   Set<String> window     =       driver.getWindowHandles();
+	   	   
+	   Iterator<String>  it =   window.iterator();
+	   
+	   String parent = it.next();
+	   String child1 = it.next();
+	   driver.switchTo().window(child1);
+	   driver.switchTo().window(parent);
+	   driver.findElement(By.xpath("(//div[@class=\"rb_main_secondary_item  link\"])[1]")).click();
+	   String child2 = it.next();
+	   driver.switchTo().window(child2);
+	   driver.switchTo().window(child1);
 	}
 	 
 	 
@@ -47,6 +47,3 @@ public class test {
 	
 	
 	
-	
-	
-}
