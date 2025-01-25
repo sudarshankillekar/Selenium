@@ -15,28 +15,37 @@ public class test {
 
 	public static void main(String[] args) throws InterruptedException {
 	
-	WebDriver driver;	
+	WebDriver driver = new ChromeDriver();
 	
-	driver =  new ChromeDriver();
+	driver.get("https://www.goibibo.com/bus/");
 	
-	driver.manage().window().maximize();
+	driver.findElement(By.xpath("//input[@name=\"autosuggestBusSRPSrcHomeName\"]")).sendKeys("B");
 	
-	driver.get("https://www.redbus.in/");
+	Thread.sleep(2000);
 	
-	driver.findElement(By.xpath("(//div[@class=\"rb_main_secondary_item  link\"])[1]")).click();
+	List<WebElement> text = driver.findElements(By.xpath("//li/span"));
 	
-	   Set<String> window     =       driver.getWindowHandles();
-	   	   
-	   Iterator<String>  it =   window.iterator();
-	   
-	   String parent = it.next();
-	   String child1 = it.next();
-	   driver.switchTo().window(child1);
-	   driver.switchTo().window(parent);
-	   driver.findElement(By.xpath("(//div[@class=\"rb_main_secondary_item  link\"])[1]")).click();
-	   String child2 = it.next();
-	   driver.switchTo().window(child2);
-	   driver.switchTo().window(child1);
+	String placename = "Patna, Bihar";
+	int count = 0;
+	for(WebElement names :text) {
+    
+   
+    String test =   names.getText();	
+		
+	if(test.contains(placename)) {
+		
+		names.click();
+		count++;	
+	}
+	
+	}
+	
+		
+		
+		
+		
+		
+		
 	}
 	 
 	 
